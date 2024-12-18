@@ -1,0 +1,25 @@
+.wrapper {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  overflow: hidden;
+}
+
+.inner__con {
+  width: 100%;
+  margin: 0 2.4rem;
+  display: flex;
+}
+
+.content {
+  flex: 1;
+  background-color: aquamarine;
+  padding-top: 2rem;
+}
