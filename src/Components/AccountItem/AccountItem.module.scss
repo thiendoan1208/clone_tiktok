@@ -1,0 +1,32 @@
+.wrapper {
+  width: 100%;
+  min-height: 4rem;
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+
+  &:hover {
+    cursor: pointer;
+    background-color: var(--search-background-color);
+  }
+}
+
+.avatar {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
+  margin-right: 1rem;
+}
+
+.icon {
+  padding-left: 0.5rem;
+  font-weight: 500;
+  color: rgb(0, 195, 255);
+}
+
+.username {
+  font-size: 1.4rem;
+  color: var(--search-icon-color);
+}
