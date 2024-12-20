@@ -1,9 +1,29 @@
 import classNames from 'classnames/bind';
-import Tippy from '@tippyjs/react/headless';
+import HeadlesTippy from '@tippyjs/react/headless';
+import Tippy from '@tippyjs/react';
 import { useEffect, useState, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleXmark, faHourglassHalf, faMagnifyingGlass, faQrcode, faX, faEllipsisVertical, faLanguage, faCircleQuestion, faMoon } from '@fortawesome/free-solid-svg-icons';
+import {
+  faCircleXmark,
+  faHourglassHalf,
+  faMagnifyingGlass,
+  faQrcode,
+  faX,
+  faEllipsisVertical,
+  faLanguage,
+  faCircleQuestion,
+  faMoon,
+  faCloudUpload,
+  faEnvelope,
+  faUser,
+  faCoins,
+  faHouse,
+  faGear,
+  faArrowRightFromBracket,
+} from '@fortawesome/free-solid-svg-icons';
+import { faEnvelopeOpen } from '@fortawesome/free-regular-svg-icons';
 
+import 'tippy.js/dist/tippy.css';
 import styles from './Header.module.scss';
 import images from '~/assets/images';
 import { Wrapper as ProppersWrapper } from '~/Components/Proppers';
@@ -62,7 +82,6 @@ const MENU_ITEM = [
         },
       ],
     },
-
   },
 ];
 
@@ -70,7 +89,9 @@ function Header() {
   const [result, setResult] = useState([]);
   const [click, setClick] = useState(false);
   const fixedBtnRef = useRef();
+  const currentUser = true;
 
+  // Hanle Logic
   const handleClickforGetAppBtn = () => {
     const getAppbtn = fixedBtnRef.current;
 
@@ -92,13 +113,43 @@ function Header() {
   };
 
   const handleMenuChange = (MenuItem) => {
-      switch(MenuItem.type) {
-        case 'language':
-          // Handle
-          break;
-        default:
-      }
+    switch (MenuItem.type) {
+      case 'language':
+        // Handle
+        break;
+      default:
+    }
   };
+
+  const userMenu = [
+    {
+      icon: <FontAwesomeIcon icon={faUser} />,
+      title: 'View profile',
+      to: '/profile',
+    },
+    {
+      icon: <FontAwesomeIcon icon={faCoins} />,
+      title: 'Get coins',
+      to: '/coins',
+    },
+    {
+      icon: <FontAwesomeIcon icon={faHouse} />,
+      title: 'Creator tools',
+      to: '/creator-tools',
+    },
+    {
+      icon: <FontAwesomeIcon icon={faGear} />,
+      title: 'Setting',
+      to: '/setting',
+    },
+    ...MENU_ITEM,
+    {
+      icon: <FontAwesomeIcon icon={faArrowRightFromBracket} />,
+      title: 'Log out',
+      to: '/',
+      separate: true,
+    },
+  ];
 
   return (
     <header className={cx('wrapper')}>
@@ -107,7 +158,7 @@ function Header() {
           <img src={images.logo.default} alt="Tiktok" />
         </div>
 
-        <Tippy
+        <HeadlesTippy
           interactive={true}
           visible={result.length > 0}
           render={(attrs) => (
@@ -122,40 +173,70 @@ function Header() {
               </ProppersWrapper>
             </div>
           )}
-        ></Tippy>
-        <div className={cx('header__search')}>
-          <input className={cx('search__input')} placeholder="Search" />
-          <button className={cx('search__clear')}>
-            <FontAwesomeIcon icon={faCircleXmark} />
-          </button>
-          <FontAwesomeIcon className={cx('search__loading')} icon={faHourglassHalf} />
+        >
+          <div className={cx('header__search')}>
+            <input className={cx('search__input')} placeholder="Search" />
+            <button className={cx('search__clear')}>
+              <FontAwesomeIcon icon={faCircleXmark} />
+            </button>
+            <FontAwesomeIcon className={cx('search__loading')} icon={faHourglassHalf} />
 
-          <button className={cx('search__find')}>
-            <FontAwesomeIcon icon={faMagnifyingGlass} />
-          </button>
-        </div>
-
-        <div className={cx('header__action')}>
-          <Buttons text>Upload</Buttons>
-          <Buttons primary>Login</Buttons>
-
-          <div onClick={handleClickforGetAppBtn} className={cx('getapp__btn')}>
-            <button ref={fixedBtnRef} className={cx('fixed__btn')}>
-              {!click ? (
-                <>
-                  <FontAwesomeIcon className={cx('qr__icon')} icon={faQrcode} />
-                  Get app
-                </>
-              ) : (
-                <FontAwesomeIcon icon={faX} />
-              )}
+            <button className={cx('search__find')}>
+              <FontAwesomeIcon icon={faMagnifyingGlass} />
             </button>
           </div>
-          <Menu items={MENU_ITEM} onChange={handleMenuChange}>
-            <button className={cx('more__btn')}>
-              <FontAwesomeIcon icon={faEllipsisVertical} />
-            </button>
+        </HeadlesTippy>
+
+        <div className={cx('header__action')}>
+          {currentUser ? (
+            <>
+              <Tippy content="Upload video" placement="bottom">
+                <button className={cx('upload__btn')}>
+                  <FontAwesomeIcon icon={faCloudUpload} />
+                </button>
+              </Tippy>
+
+              <Tippy content="Inbox" placement="bottom">
+                <button className={cx('message__btn')}>
+                  <FontAwesomeIcon icon={faEnvelopeOpen} />
+                </button>
+              </Tippy>
+            </>
+          ) : (
+            <>
+              <Buttons text>Upload</Buttons>
+              <Buttons primary>Login</Buttons>
+            </>
+          )}
+
+          <Menu items={currentUser ? userMenu : MENU_ITEM} onChange={handleMenuChange}>
+            {currentUser ? (
+              <div className={cx('user__avatar')}>
+                <img
+                  src="https://p9-sign-sg.tiktokcdn.com/aweme/1080x1080/tos-alisg-avt-0068/c1e04ca453189d9e40ddb5cca3e5b78c.jpeg?lk3s=a5d48078&nonce=32733&refresh_token=cfe94c09624a921c4bbd3a3c8bd7d3c1&x-expires=1734739200&x-signature=EAtrZh%2BQr8xKOJGSiZ4WJfz8buU%3D&shp=a5d48078&shcp=81f88b70"
+                  alt="User avatar"
+                  className={cx('avatar')}
+                />
+              </div>
+            ) : (
+              <button className={cx('more__btn')}>
+                <FontAwesomeIcon icon={faEllipsisVertical} />
+              </button>
+            )}
           </Menu>
+        </div>
+
+        <div onClick={handleClickforGetAppBtn} className={cx('getapp__btn')}>
+          <button ref={fixedBtnRef} className={cx('fixed__btn')}>
+            {!click ? (
+              <>
+                <FontAwesomeIcon className={cx('qr__icon')} icon={faQrcode} />
+                Get app
+              </>
+            ) : (
+              <FontAwesomeIcon icon={faX} />
+            )}
+          </button>
         </div>
       </div>
     </header>

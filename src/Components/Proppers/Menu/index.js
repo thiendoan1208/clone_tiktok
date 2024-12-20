@@ -39,7 +39,9 @@ function Menu({ children, items = [], onChange = defaultFn }) {
   return (
     <Tippy
       interactive
+      // Visible condition
       delay={[0, 700]}
+      offset={[10, 10]}
       placement="bottom-start"
       render={(attrs) => (
         <div className={cx('content')} tabIndex="-1" {...attrs}>
@@ -56,7 +58,9 @@ function Menu({ children, items = [], onChange = defaultFn }) {
           </div>
         </div>
       )}
-      onHide={() => {setHistory(pre => pre.slice(0, 1))}}
+      onHide={() => {
+        setHistory((pre) => pre.slice(0, 1));
+      }}
     >
       {children}
     </Tippy>

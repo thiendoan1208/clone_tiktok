@@ -121,7 +121,7 @@
   position: fixed;
   bottom: 2rem;
   right: 2rem;
-  transition: .5s;
+  transition: 0.5s;
 }
 
 .fixed__btn {
@@ -137,20 +137,57 @@
   box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 8px;
   border: 1px solid rgba(22, 24, 35, 0.12);
   color: rgba(22, 24, 35, 0.75);
-  transition: all .2s linear;
+  transition: all 0.2s linear;
 
   &:hover {
     background-color: rgb(245, 245, 245);
   }
 
   &.hidden {
-    font-size: .1rem;
+    font-size: 0.1rem;
   }
-
 }
 
 .qr__icon {
   padding-right: 0.8rem;
+}
+
+// Action
+.header__action {
+  display: flex;
+  align-items: center;
+}
+
+.user__avatar {
+  width: 3.2rem;
+  height: 3.2rem;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 50%;
+  cursor: pointer;
+  overflow: hidden;
+  
+  .avatar {
+    width: 100%;
+  }
+}
+
+.action__btn {
+  background-color: transparent;
+  font-size: 2.6rem;
+  color: #161823;
+  cursor: pointer;
+}
+
+.upload__btn {
+  @extend .action__btn;
+  padding: 0 1.6rem;
+  margin-right: -1.6rem;
+}
+
+.message__btn {
+  @extend .action__btn;
+  padding: 0 1.6rem;
 }
 
 .more__btn {
