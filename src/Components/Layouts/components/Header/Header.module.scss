@@ -166,7 +166,7 @@
   border-radius: 50%;
   cursor: pointer;
   overflow: hidden;
-  
+
   .avatar {
     width: 100%;
   }
@@ -186,9 +186,24 @@
 }
 
 .message__btn {
+  position: relative;
   @extend .action__btn;
   padding: 0 1.6rem;
+
+  .message__noti {
+    position: absolute;
+    top: -1rem;
+    right: 0;
+    min-width: 3rem;
+    min-height: 3rem;
+    padding-top: .5rem;
+    font-size: 1.6rem;
+    color: var(--white);
+    background-color: var(--primary);
+    border-radius: 50%;
+  }
 }
+
 
 .more__btn {
   font-size: 2rem;

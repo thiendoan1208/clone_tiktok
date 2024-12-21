@@ -31,6 +31,7 @@ import SearchResult from '~/Components/SearchResult';
 import AccountItem from '~/Components/AccountItem';
 import Buttons from '~/Components/Buttons';
 import Menu from '~/Components/Proppers/Menu';
+import DefaultImage from '~/Components/Images';
 
 const cx = classNames.bind(styles);
 
@@ -199,6 +200,7 @@ function Header() {
               <Tippy content="Inbox" placement="bottom">
                 <button className={cx('message__btn')}>
                   <FontAwesomeIcon icon={faEnvelopeOpen} />
+                  <span className={cx('message__noti')}>99+</span>
                 </button>
               </Tippy>
             </>
@@ -211,13 +213,11 @@ function Header() {
 
           <Menu items={currentUser ? userMenu : MENU_ITEM} onChange={handleMenuChange}>
             {currentUser ? (
-              <div className={cx('user__avatar')}>
-                <img
-                  src="https://p9-sign-sg.tiktokcdn.com/aweme/1080x1080/tos-alisg-avt-0068/c1e04ca453189d9e40ddb5cca3e5b78c.jpeg?lk3s=a5d48078&nonce=32733&refresh_token=cfe94c09624a921c4bbd3a3c8bd7d3c1&x-expires=1734739200&x-signature=EAtrZh%2BQr8xKOJGSiZ4WJfz8buU%3D&shp=a5d48078&shcp=81f88b70"
-                  alt="User avatar"
-                  className={cx('avatar')}
-                />
-              </div>
+              <DefaultImage
+                className={cx('user__avatar')}
+                src={images.userAvatar}
+                alt="User avatar"
+              />
             ) : (
               <button className={cx('more__btn')}>
                 <FontAwesomeIcon icon={faEllipsisVertical} />
