@@ -1,0 +1,41 @@
+@mixin flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+// Fixed Icon
+.getapp__btn {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  transition: 0.5s;
+}
+
+.fixed__btn {
+  @include flex();
+  font-size: 1.6rem;
+  font-weight: 700;
+  padding: 0.9rem 1.6rem;
+  border-radius: 0.4rem;
+  background-color: var(--white);
+  cursor: pointer;
+  user-select: none;
+  border-radius: 999rem;
+  box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 8px;
+  border: 1px solid rgba(22, 24, 35, 0.12);
+  color: rgba(22, 24, 35, 0.75);
+  transition: all 0.2s linear;
+
+  &:hover {
+    background-color: rgb(245, 245, 245);
+  }
+
+  &.hidden {
+    font-size: 0.1rem;
+  }
+}
+
+.qr__icon {
+  padding-right: 0.8rem;
+}

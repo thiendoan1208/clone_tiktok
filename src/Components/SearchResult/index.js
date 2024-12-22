@@ -5,13 +5,15 @@ import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 
 const cx = classNames.bind(styles);
 
-function SearchResult() {
+function SearchResult({ data }) {
   return (
   <>
+    { !!data && 
     <div className={cx('result')}>
-      <FontAwesomeIcon className={cx('result__icon')} icon={faMagnifyingGlass} />
-      <h1 className={cx('result__text')}>Xin chao cac ban</h1>
-    </div>
+    <FontAwesomeIcon className={cx('result__icon')} icon={faMagnifyingGlass} />
+    <h1 className={cx('result__text')}>{data}</h1>
+  </div> 
+  }
   </>);
 }
 

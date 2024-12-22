@@ -1,20 +1,12 @@
 import classNames from 'classnames/bind';
-import HeadlesTippy from '@tippyjs/react/headless';
 import Tippy from '@tippyjs/react';
-import { useEffect, useState, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
-  faCircleXmark,
-  faHourglassHalf,
-  faMagnifyingGlass,
-  faQrcode,
-  faX,
   faEllipsisVertical,
   faLanguage,
   faCircleQuestion,
   faMoon,
   faCloudUpload,
-  faEnvelope,
   faUser,
   faCoins,
   faHouse,
@@ -26,12 +18,11 @@ import { faEnvelopeOpen } from '@fortawesome/free-regular-svg-icons';
 import 'tippy.js/dist/tippy.css';
 import styles from './Header.module.scss';
 import images from '~/assets/images';
-import { Wrapper as ProppersWrapper } from '~/Components/Proppers';
-import SearchResult from '~/Components/SearchResult';
-import AccountItem from '~/Components/AccountItem';
 import Buttons from '~/Components/Buttons';
 import Menu from '~/Components/Proppers/Menu';
 import DefaultImage from '~/Components/Images';
+import Search from '~/Components/Layouts/components/Search';
+import FixedBtn from '../FixedBtn';
 
 const cx = classNames.bind(styles);
 
@@ -87,31 +78,9 @@ const MENU_ITEM = [
 ];
 
 function Header() {
-  const [result, setResult] = useState([]);
-  const [click, setClick] = useState(false);
-  const fixedBtnRef = useRef();
   const currentUser = true;
 
   // Hanle Logic
-  const handleClickforGetAppBtn = () => {
-    const getAppbtn = fixedBtnRef.current;
-
-    if (getAppbtn.innerText == 'Get app') {
-      getAppbtn.classList.add(cx('hidden'));
-
-      setTimeout(() => {
-        getAppbtn.classList.remove(cx('hidden'));
-        setClick(true);
-      }, 100);
-    } else {
-      getAppbtn.classList.add(cx('hidden'));
-
-      setTimeout(() => {
-        getAppbtn.classList.remove(cx('hidden'));
-        setClick(false);
-      }, 100);
-    }
-  };
 
   const handleMenuChange = (MenuItem) => {
     switch (MenuItem.type) {
@@ -159,34 +128,7 @@ function Header() {
           <img src={images.logo.default} alt="Tiktok" />
         </div>
 
-        <HeadlesTippy
-          interactive={true}
-          visible={result.length > 0}
-          render={(attrs) => (
-            <div className={cx('search__result')} tabIndex="-1" {...attrs}>
-              <ProppersWrapper>
-                <SearchResult />
-                <h1 className={cx('account')}>Accounts</h1>
-                <AccountItem />
-                <h1 className={cx('all__result')}>
-                  View all results for "<span>meo</span>"{' '}
-                </h1>
-              </ProppersWrapper>
-            </div>
-          )}
-        >
-          <div className={cx('header__search')}>
-            <input className={cx('search__input')} placeholder="Search" />
-            <button className={cx('search__clear')}>
-              <FontAwesomeIcon icon={faCircleXmark} />
-            </button>
-            <FontAwesomeIcon className={cx('search__loading')} icon={faHourglassHalf} />
-
-            <button className={cx('search__find')}>
-              <FontAwesomeIcon icon={faMagnifyingGlass} />
-            </button>
-          </div>
-        </HeadlesTippy>
+        <Search />
 
         <div className={cx('header__action')}>
           {currentUser ? (
@@ -210,14 +152,10 @@ function Header() {
               <Buttons primary>Login</Buttons>
             </>
           )}
-
+          
           <Menu items={currentUser ? userMenu : MENU_ITEM} onChange={handleMenuChange}>
             {currentUser ? (
-              <DefaultImage
-                className={cx('user__avatar')}
-                src={images.userAvatar}
-                alt="User avatar"
-              />
+              <DefaultImage className={cx('user__avatar')} src={images.userAvatar} alt="User avatar" />
             ) : (
               <button className={cx('more__btn')}>
                 <FontAwesomeIcon icon={faEllipsisVertical} />
@@ -225,20 +163,9 @@ function Header() {
             )}
           </Menu>
         </div>
-
-        <div onClick={handleClickforGetAppBtn} className={cx('getapp__btn')}>
-          <button ref={fixedBtnRef} className={cx('fixed__btn')}>
-            {!click ? (
-              <>
-                <FontAwesomeIcon className={cx('qr__icon')} icon={faQrcode} />
-                Get app
-              </>
-            ) : (
-              <FontAwesomeIcon icon={faX} />
-            )}
-          </button>
-        </div>
       </div>
+
+      <FixedBtn />
     </header>
   );
 }
