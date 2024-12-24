@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import Tippy from '@tippyjs/react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -23,6 +24,7 @@ import Menu from '~/Components/Proppers/Menu';
 import DefaultImage from '~/Components/Images';
 import Search from '~/Components/Layouts/components/Search';
 import FixedBtn from '../FixedBtn';
+import routes from '~/config/routes';
 
 const cx = classNames.bind(styles);
 
@@ -125,7 +127,9 @@ function Header() {
     <header className={cx('wrapper')}>
       <div className={cx('inner__wrapper')}>
         <div className={cx('header__logo')}>
-          <img src={images.logo.default} alt="Tiktok" />
+          <Link className={cx('logo__link')} to={routes.home}>
+            <img src={images.logo.default} alt="Tiktok" />
+          </Link>
         </div>
 
         <Search />
@@ -152,7 +156,7 @@ function Header() {
               <Buttons primary>Login</Buttons>
             </>
           )}
-          
+
           <Menu items={currentUser ? userMenu : MENU_ITEM} onChange={handleMenuChange}>
             {currentUser ? (
               <DefaultImage className={cx('user__avatar')} src={images.userAvatar} alt="User avatar" />

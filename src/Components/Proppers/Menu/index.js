@@ -1,7 +1,14 @@
 import Tippy from '@tippyjs/react/headless';
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleXmark, faHourglassHalf, faMagnifyingGlass, faQrcode, faX, faEllipsisVertical } from '@fortawesome/free-solid-svg-icons';
+import {
+  faCircleXmark,
+  faHourglassHalf,
+  faMagnifyingGlass,
+  faQrcode,
+  faX,
+  faEllipsisVertical,
+} from '@fortawesome/free-solid-svg-icons';
 
 import styles from './Menu.module.scss';
 import MenuItem from './MenuItem';
@@ -12,7 +19,7 @@ const cx = classNames.bind(styles);
 
 const defaultFn = () => {};
 
-function Menu({ children, items = [], onChange = defaultFn }) {
+function Menu({ children, items = [], onChange = defaultFn, hideOnClick = false }) {
   const [history, setHistory] = useState([{ data: items }]);
   const current = history[history.length - 1];
 
@@ -39,7 +46,7 @@ function Menu({ children, items = [], onChange = defaultFn }) {
   return (
     <Tippy
       interactive
-      // Visible condition
+      hideOnClick={hideOnClick}
       delay={[0, 700]}
       offset={[10, 10]}
       placement="bottom-start"
@@ -54,7 +61,7 @@ function Menu({ children, items = [], onChange = defaultFn }) {
                 }}
               />
             )}
-            {renderItem()}
+            <div className={cx('menu__content')}>{renderItem()}</div>
           </div>
         </div>
       )}
@@ -68,3 +75,5 @@ function Menu({ children, items = [], onChange = defaultFn }) {
 }
 
 export default Menu;
+
+// 13:30

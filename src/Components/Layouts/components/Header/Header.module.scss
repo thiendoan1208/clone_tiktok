@@ -5,12 +5,15 @@
 }
 
 .wrapper {
+  position: fixed;
   display: flex;
+  align-items: center;
   justify-content: center;
   width: 100%;
-  min-height: 6rem;
+  min-height: 6.7rem;
   box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 1px;
   z-index: 10;
+  background-color: white;
 }
 
 .inner__wrapper {
@@ -24,6 +27,10 @@
 
 .header__logo {
   @include flex;
+}
+
+.logo__link {
+  display: flex;
 }
 
 

@@ -1,5 +1,6 @@
 // Layouts
 import { HeaderOnly } from '~/Components/Layouts';
+import routes from '~/config/routes';
 
 // Pages
 import Home from '~/Pages/Home';
@@ -10,11 +11,11 @@ import Search from '~/Pages/Search';
 
 // Routes khi chưa đăng nhập vẫn xem được
 const publicRoutes = [
-  { path: '/', component: Home },
-  { path: '/following', component: Following },
-  { path: '/:nickname', component: Profile },
-  { path: '/upload', component: Upload, layout: HeaderOnly },
-  { path: '/search', component: Search, layout: null },
+  { path: routes.home, component: Home },
+  { path: routes.following, component: Following },
+  { path: routes.profile, component: Profile },
+  { path: routes.upload, component: Upload, layout: HeaderOnly },
+  { path: routes.search, component: Search, layout: null },
 ];
 
 // Chỉ khi đăng nhập hoặc đăng kí mới xem được
