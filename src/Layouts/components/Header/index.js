@@ -22,9 +22,9 @@ import images from '~/assets/images';
 import Buttons from '~/Components/Buttons';
 import Menu from '~/Components/Proppers/Menu';
 import DefaultImage from '~/Components/Images';
-import Search from '~/Components/Layouts/components/Search';
+import Search from '~/Layouts/components/Search';
 import FixedBtn from '../FixedBtn';
-import routes from '~/config/routes';
+import config from '~/config';
 
 const cx = classNames.bind(styles);
 
@@ -127,13 +127,13 @@ function Header() {
     <header className={cx('wrapper')}>
       <div className={cx('inner__wrapper')}>
         <div className={cx('header__logo')}>
-          <Link className={cx('logo__link')} to={routes.home}>
+          <Link className={cx('logo__link')} to={config.routes.home}>
             <img src={images.logo.default} alt="Tiktok" />
           </Link>
         </div>
 
         <Search />
-
+        
         <div className={cx('header__action')}>
           {currentUser ? (
             <>
@@ -175,3 +175,5 @@ function Header() {
 }
 
 export default Header;
+
+// 18:39

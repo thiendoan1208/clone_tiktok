@@ -72,6 +72,7 @@ function Menu({ children, items = [], onChange = defaultFn, hideOnClick = false 
       {children}
     </Tippy>
   );
+
 }
 
 export default Menu;

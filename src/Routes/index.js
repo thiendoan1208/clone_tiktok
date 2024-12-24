@@ -1,6 +1,6 @@
 // Layouts
-import { HeaderOnly } from '~/Components/Layouts';
-import routes from '~/config/routes';
+import { HeaderOnly } from '~/Layouts';
+import config from '~/config';
 
 // Pages
 import Home from '~/Pages/Home';
@@ -11,14 +11,16 @@ import Search from '~/Pages/Search';
 
 // Routes khi chưa đăng nhập vẫn xem được
 const publicRoutes = [
-  { path: routes.home, component: Home },
-  { path: routes.following, component: Following },
-  { path: routes.profile, component: Profile },
-  { path: routes.upload, component: Upload, layout: HeaderOnly },
-  { path: routes.search, component: Search, layout: null },
+  { path: config.routes.home, component: Home },
+  { path: config.routes.following, component: Following },
+  { path: config.routes.profile, component: Profile },
+  { path: config.routes.upload, component: Upload, layout: HeaderOnly },
+  { path: config.routes.search, component: Search, layout: null },
 ];
 
 // Chỉ khi đăng nhập hoặc đăng kí mới xem được
 const privateRoutes = [];
 
 export { privateRoutes, publicRoutes };
+
+

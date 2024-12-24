@@ -4,14 +4,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleXmark, faHourglassHalf, faMagnifyingGlass, faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { use, useState, useRef, useEffect } from 'react';
 
-import * as searchService from '~/apiServices/searchService';
+import * as searchService from '~/services/searchService';
 import 'tippy.js/dist/tippy.css';
 import styles from './Search.module.scss';
 import { Wrapper as ProppersWrapper } from '~/Components/Proppers';
 import SearchResult from '~/Components/SearchResult';
 import AccountItem from '~/Components/AccountItem';
 import { useDebounce } from '~/hooks';
-import { data } from 'react-router-dom';
 
 const cx = classNames.bind(styles);
 

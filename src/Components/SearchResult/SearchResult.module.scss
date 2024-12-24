@@ -1,24 +1,22 @@
-
 .result {
-    display: flex;
-    align-items: center;
-    justify-content: left;
-    padding: 1rem 1.5rem;
-  
-    &:hover {
-      cursor: pointer;
-      background-color: var(--search-background-color);
-    }
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  padding: 1rem 1.5rem;
+
+  &:hover {
+    cursor: pointer;
+    background-color: var(--search-background-color);
   }
-  
-  .result__icon {
-    padding-right: 1rem;
-    font-size: 1.3rem;
-    font-weight: 400;
-  }
-  
-  .result__text {
+}
+
+.result__icon {
+  padding-right: 1rem;
+  font-size: 1.3rem;
+  font-weight: 400;
+}
+
+.result__text {
   font-size: 1.6rem;
   font-weight: 400;
-  }
-  
+}
