@@ -11,6 +11,7 @@ import { Wrapper as ProppersWrapper } from '~/Components/Proppers';
 import SearchResult from '~/Components/SearchResult';
 import AccountItem from '~/Components/AccountItem';
 import { useDebounce } from '~/hooks';
+import AccountListMemo from '~/Components/AccountListMemo';
 
 const cx = classNames.bind(styles);
 
@@ -30,7 +31,7 @@ function Searh() {
       return;
     }
 
-    setLoading(true)
+    setLoading(true);
 
     request
       .get('users/search?', {
@@ -69,9 +70,7 @@ function Searh() {
             <ProppersWrapper>
               <SearchResult data={searchValue} />
               <h1 className={cx('account')}>Accounts</h1>
-              {result.map((item) => (
-                <AccountItem key={item.id} data={item} />
-              ))}
+              <AccountListMemo data={result} />
               <h1 className={cx('all__result')}>
                 View all results for "<span>{searchValue}</span>"
               </h1>
