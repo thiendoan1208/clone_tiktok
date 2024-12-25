@@ -133,7 +133,7 @@ function Header() {
         </div>
 
         <Search />
-        
+
         <div className={cx('header__action')}>
           {currentUser ? (
             <>

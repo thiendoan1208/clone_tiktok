@@ -1,14 +1,6 @@
+import PropTypes from 'prop-types';
 import Tippy from '@tippyjs/react/headless';
 import classNames from 'classnames/bind';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faCircleXmark,
-  faHourglassHalf,
-  faMagnifyingGlass,
-  faQrcode,
-  faX,
-  faEllipsisVertical,
-} from '@fortawesome/free-solid-svg-icons';
 
 import styles from './Menu.module.scss';
 import MenuItem from './MenuItem';
@@ -72,9 +64,13 @@ function Menu({ children, items = [], onChange = defaultFn, hideOnClick = false 
       {children}
     </Tippy>
   );
-
 }
 
-export default Menu;
+Menu.propTypes = {
+  children: PropTypes.node.isRequired,
+  items: PropTypes.array,
+  onChange: PropTypes.bool,
+  hideOnClick: PropTypes.func,
+};
 
-// 13:30
+export default Menu;

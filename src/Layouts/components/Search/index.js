@@ -1,10 +1,10 @@
 import classNames from 'classnames/bind';
 import HeadlesTippy from '@tippyjs/react/headless';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleXmark, faHourglassHalf, faMagnifyingGlass, faSpinner } from '@fortawesome/free-solid-svg-icons';
-import { use, useState, useRef, useEffect } from 'react';
+import { faCircleXmark, faHourglassHalf, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import { useState, useRef, useEffect } from 'react';
 
-import * as searchService from '~/services/searchService';
+import * as request from '~/utils/httpsrequest';
 import 'tippy.js/dist/tippy.css';
 import styles from './Search.module.scss';
 import { Wrapper as ProppersWrapper } from '~/Components/Proppers';
@@ -30,16 +30,22 @@ function Searh() {
       return;
     }
 
-    const fetchApi = async () => {
-      setLoading(true);
+    setLoading(true)
 
-      const result = await searchService.search(debounced);
-      setResult(result);
-
-      setLoading(false);
-    };
-
-    fetchApi();
+    request
+      .get('users/search?', {
+        params: {
+          q: debounced,
+          type: 'less',
+        },
+      })
+      .then((res) => {
+        setResult(res.data);
+        setLoading(false);
+      })
+      .catch(() => {
+        setLoading(false);
+      });
   }, [debounced]);
 
   const handleClear = () => {
@@ -85,7 +91,7 @@ function Searh() {
             placeholder="Search"
             onChange={(e) => setsearchValue(e.target.value.trimStart())}
           />
-  
+
           {!!searchValue && (
             <button className={cx('search__clear')} onClick={handleClear}>
               {loading ? (
@@ -95,7 +101,7 @@ function Searh() {
               )}
             </button>
           )}
-  
+
           <button className={cx('search__find')}>
             <FontAwesomeIcon icon={faMagnifyingGlass} />
           </button>

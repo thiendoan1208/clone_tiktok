@@ -8,5 +8,3 @@ export const get = async (path, options = {}) => {
   const response = await httpsRequest.get(path, options);
   return response.data;
 };
-
-export default httpsRequest;
