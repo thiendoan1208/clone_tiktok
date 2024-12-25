@@ -57,6 +57,7 @@ function Menu({ children, items = [], onChange = defaultFn, hideOnClick = false 
           </div>
         </div>
       )}
+      // Reset to first page
       onHide={() => {
         setHistory((pre) => pre.slice(0, 1));
       }}

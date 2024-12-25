@@ -20,12 +20,12 @@ function Searh() {
   const [showResult, setShowResult] = useState(true);
   const [loading, setLoading] = useState(false);
 
-  const debounced = useDebounce(searchValue, 500);
+  const debouncedValue = useDebounce(searchValue, 500);
 
   const inputRef = useRef();
 
   useEffect(() => {
-    if (!debounced) {
+    if (!debouncedValue) {
       setResult([]);
       return;
     }
@@ -35,7 +35,7 @@ function Searh() {
     request
       .get('users/search?', {
         params: {
-          q: debounced,
+          q: debouncedValue,
           type: 'less',
         },
       })
@@ -46,7 +46,7 @@ function Searh() {
       .catch(() => {
         setLoading(false);
       });
-  }, [debounced]);
+  }, [debouncedValue]);
 
   const handleClear = () => {
     setsearchValue('');

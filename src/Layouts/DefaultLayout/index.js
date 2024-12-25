@@ -28,3 +28,4 @@ DefaultLayout.propTypes = {
 };
 
 export default DefaultLayout;
+
