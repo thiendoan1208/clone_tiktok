@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -48,6 +49,10 @@ function Sidebar({ currentUser }) {
       )}
     </aside>
   );
+}
+
+Sidebar.propTypes = {
+  currentUser: PropTypes.bool.isRequired,
 }
 
 export default Sidebar;

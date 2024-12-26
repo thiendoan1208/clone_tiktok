@@ -47,3 +47,33 @@ footer {
     padding: .5rem 0;
   }
 }
+
+
+// Responsive
+@media only screen and (max-width: 66.8125em) {
+  .wrapper {
+    display: none;
+  }
+
+  .tiktok__effect--wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .tiktok__effect--icon {
+    margin-top: 1rem;
+    width: 4rem;
+    height:  4rem;
+    cursor: pointer;
+  }
+}
+
+
+@media only screen and (min-width: 66.8126em) {
+    
+  .tiktok__effect--wrapper {
+   display: none;
+  }
+}

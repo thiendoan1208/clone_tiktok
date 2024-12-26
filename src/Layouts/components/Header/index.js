@@ -7,7 +7,7 @@ import {
   faLanguage,
   faCircleQuestion,
   faMoon,
-  faCloudUpload,
+  faPlus,
   faUser,
   faCoins,
   faHouse,
@@ -15,6 +15,7 @@ import {
   faArrowRightFromBracket,
 } from '@fortawesome/free-solid-svg-icons';
 import { faEnvelopeOpen } from '@fortawesome/free-regular-svg-icons';
+import PropTypes from 'prop-types';
 
 import 'tippy.js/dist/tippy.css';
 import styles from './Header.module.scss';
@@ -80,8 +81,6 @@ const MENU_ITEM = [
 ];
 
 function Header({ currentUser }) {
-  
-
   // Hanle Logic
 
   const handleMenuChange = (MenuItem) => {
@@ -137,11 +136,10 @@ function Header({ currentUser }) {
         <div className={cx('header__action')}>
           {currentUser ? (
             <>
-              <Tippy content="Upload video" placement="bottom">
-                <button className={cx('upload__btn')}>
-                  <FontAwesomeIcon icon={faCloudUpload} />
-                </button>
-              </Tippy>
+              <Link to={config.routes.upload} className={cx('upload__button')}>
+                <FontAwesomeIcon className={cx('icon')} icon={faPlus} />
+                <span>Upload</span>
+              </Link>
 
               <Tippy content="Inbox" placement="bottom">
                 <button className={cx('message__btn')}>
@@ -152,8 +150,9 @@ function Header({ currentUser }) {
             </>
           ) : (
             <>
-              <Buttons text>Upload</Buttons>
-              <Buttons primary to='/'>Login</Buttons>
+              <Buttons primary to="/">
+                Login
+              </Buttons>
             </>
           )}
 
@@ -174,6 +173,8 @@ function Header({ currentUser }) {
   );
 }
 
-export default Header;
+Header.propTypes = {
+  currentUser: PropTypes.bool.isRequired,
+};
 
-// 18:39
+export default Header;

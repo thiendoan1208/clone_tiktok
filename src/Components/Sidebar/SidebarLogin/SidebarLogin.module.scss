@@ -1,5 +1,5 @@
 .wrapper {
-width: 100%;
+  width: 100%;
 }
 
 hr {
@@ -11,7 +11,7 @@ hr {
   width: 100%;
   display: flex;
   flex-direction: column;
-  padding: .5rem .8rem .8rem .8rem;
+  padding: 0.5rem 0.8rem 0.8rem 0.8rem;
 
   p {
     color: rgba(22, 24, 35, 0.5);
@@ -23,5 +23,11 @@ hr {
   .button {
     width: 100%;
     height: 5rem;
+  }
+}
+
+@media only screen and (max-width: 66.8126em) {
+  .wrapper {
+    display: none;
   }
 }

@@ -60,10 +60,31 @@
   cursor: pointer;
 }
 
-.upload__btn {
-  @extend .action__btn;
-  padding: 0 1.6rem;
-  margin-right: -1.6rem;
+.upload__button {
+  min-width: 110px;
+  padding: 0px 16px;
+  height: 36px;
+  border: 1px solid rgba(22, 24, 35, 0.12);
+  border-radius: 2px;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  background: rgb(255, 255, 255);
+  cursor: pointer;
+  position: relative;
+  font-weight: 400;
+  transition: .2s;
+
+  .icon {
+    padding-right: 1rem;
+  }
+
+  &:hover {
+    background-color:  rgba(24, 24, 37, 0.02);
+  }
+
 }
 
 .message__btn {

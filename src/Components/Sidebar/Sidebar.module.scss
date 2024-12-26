@@ -8,7 +8,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  transition: 0.3s;
+  transition: .1s;
 }
 
 /* width */
@@ -32,3 +32,11 @@
   overflow-y: auto;
 }
 
+
+
+// Responsive
+@media only screen and (max-width: 66.8125em) {
+  .wrapper {
+    min-width: 7rem;
+  }
+}

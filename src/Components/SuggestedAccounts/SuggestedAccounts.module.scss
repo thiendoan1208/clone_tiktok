@@ -76,3 +76,11 @@
 .preview {
   min-width: 28rem;
 }
+
+
+// Responsive
+@media only screen and (max-width: 66.8125em) {
+  .wrapper {
+    display: none;
+  }
+}

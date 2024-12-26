@@ -9,7 +9,6 @@ import 'tippy.js/dist/tippy.css';
 import styles from './Search.module.scss';
 import { Wrapper as ProppersWrapper } from '~/Components/Proppers';
 import SearchResult from '~/Components/SearchResult';
-import AccountItem from '~/Components/AccountItem';
 import { useDebounce } from '~/hooks';
 import AccountListMemo from '~/Components/AccountListMemo';
 
