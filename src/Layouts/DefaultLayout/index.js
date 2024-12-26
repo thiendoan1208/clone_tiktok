@@ -8,15 +8,15 @@ import styles from './DefaultLayout.module.scss';
 const cx = classNames.bind(styles);
 
 function DefaultLayout({ children }) {
+  const currentUser = false;
+
   return (
     <div className={cx('wrapper')}>
-      <Header />
+      <Header currentUser={currentUser} />
       <div className={cx('container')}>
         <div className={cx('inner__con')}>
-          <Sidebar />
-          <div className={cx('content')}>
-          {children}
-          </div>
+          <Sidebar currentUser={currentUser} />
+          <div className={cx('content')}>{children}</div>
         </div>
       </div>
     </div>
@@ -28,4 +28,3 @@ DefaultLayout.propTypes = {
 };
 
 export default DefaultLayout;
-

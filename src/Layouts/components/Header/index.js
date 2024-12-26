@@ -79,8 +79,8 @@ const MENU_ITEM = [
   },
 ];
 
-function Header() {
-  const currentUser = true;
+function Header({ currentUser }) {
+  
 
   // Hanle Logic
 

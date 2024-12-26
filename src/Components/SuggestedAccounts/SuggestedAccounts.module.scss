@@ -1,0 +1,78 @@
+.wrapper {
+  width: 100%;
+
+  hr {
+    margin-top: 1rem;
+    opacity: 0.3;
+  }
+}
+
+.label {
+  color: rgba(22, 24, 35, 0.75);
+  font-weight: 600;
+  font-size: 1.4rem;
+  padding: 0.2rem 0 0.2rem 0.8rem;
+  margin: 1rem 0 0.2rem;
+}
+
+// Account Item
+.account__item {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 1rem 1rem 1rem 0.9rem; 
+  border-radius: .5rem;
+  transition: background-color 0.2s linear;
+
+  &:hover {
+    cursor: pointer;
+    background-color: var(--search-background-color);
+  }
+}
+
+.user__img {
+  width: 3.2rem;
+  height: 3.2rem;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 50%;
+}
+
+.item__info {
+  margin-left: 0.8rem;
+}
+
+.nickname {
+  line-height: 1;
+
+  strong {
+    font-size: 1.6rem;
+    padding-right: 0.5rem;
+  }
+
+  .tick {
+    color: rgb(0, 195, 255);
+  }
+}
+
+.username {
+  color: rgba(22, 24, 35, 0.75);
+  font-size: 1.2rem;
+}
+
+.see__more--btn {
+  margin: 0.3rem 0;
+  color: var(--primary);
+  font-weight: 700;
+  font-size: 1.4rem;
+  cursor: pointer;
+  padding-left: 0.8rem;
+  user-select: none;
+}
+
+// Preview account 
+
+.preview {
+  min-width: 28rem;
+}

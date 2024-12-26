@@ -1,0 +1,61 @@
+.preview {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+
+  img {
+    width: 4rem;
+    height: 4rem;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 50%;
+  }
+}
+
+.body {
+  padding: 1.7rem 0;
+}
+
+.nickname {
+  line-height: 1;
+
+  strong {
+    font-size: 1.6rem;
+    padding-right: 0.5rem;
+  }
+
+  .tick {
+    color: rgb(0, 195, 255);
+  }
+}
+
+.username {
+  color: rgba(22, 24, 35, 0.75);
+  font-size: 1.4rem;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.analysis {
+  display: flex;
+
+  span {
+    font-weight: 700;
+    padding-right: 0.5rem;
+  }
+
+  p {
+    color: rgba(22, 24, 35, 0.75);
+    font-size: 1.6rem;
+  }
+}

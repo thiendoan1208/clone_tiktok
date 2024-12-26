@@ -22,7 +22,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 0 2.4rem;
+  margin: 0 1rem;
 }
 
 .header__logo {
@@ -32,7 +32,6 @@
 .logo__link {
   display: flex;
 }
-
 
 // Action
 .header__action {
@@ -71,13 +70,13 @@
   position: relative;
   @extend .action__btn;
   padding: 0 1.6rem;
-  margin: 0 1rem 0 .5rem;
+  margin: 0 1rem 0 0.5rem;
 
   .message__noti {
     position: absolute;
     top: -1rem;
     right: 0;
-    padding: .5rem;
+    padding: 0.5rem;
     font-size: 1rem;
     color: var(--white);
     background-color: var(--primary);
@@ -85,11 +84,10 @@
   }
 }
 
-
 .more__btn {
   font-size: 2rem;
   margin: -1rem -1rem -1rem 1rem;
-  padding: 1rem 1rem 1rem 1rem;
+  padding: 1rem 2rem 1rem 1rem;
   background-color: transparent;
   cursor: pointer;
 }
@@ -98,5 +96,3 @@
 .more__menu {
   width: 24rem;
 }
-
-
