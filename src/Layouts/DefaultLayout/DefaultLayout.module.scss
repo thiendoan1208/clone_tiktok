@@ -26,5 +26,12 @@
   height: 100%;
   padding-top: 1rem;
   padding-bottom: 2rem;
-  overflow-y: hidden;
+  overflow-y: auto;
+  scroll-snap-type: y mandatory;
+  scroll-padding-top: 1.2rem;
+  
+  // &::-webkit-scrollbar {
+  //   width: 5px;
+  // }
 }
+
