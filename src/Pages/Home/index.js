@@ -21,8 +21,6 @@ function Home() {
   const videoArray = videoRefs.current;
   const videoList = videoArray.length;
 
-  console.log(currentVideo);
-
   // Call API
   useEffect(() => {
     request

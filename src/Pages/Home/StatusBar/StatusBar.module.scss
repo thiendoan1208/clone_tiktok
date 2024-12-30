@@ -1,0 +1,72 @@
+@mixin flex() {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.avatar {
+  position: relative;
+}
+
+.avatar__user {
+  width: 4.8rem;
+  height: 4.8rem;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.follow__btn {
+  position: absolute;
+  bottom: -0.2rem;
+  left: 25%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  width: 2.4rem;
+  height: 2.4rem;
+  background-color: var(--primary);
+  border-radius: 50%;
+  color: var(--white);
+  cursor: pointer;
+  transition: .2s;
+
+
+  &.followed {
+    background-color: white;
+    color: var(--primary);
+    border: 1px solid rgb(197, 197, 197);
+  }
+}
+
+.react {
+  @include flex();
+  flex-direction: column;
+
+  .react__btn {
+    @include flex;
+    font-size: 2.1rem;
+    border-radius: 50%;
+    transition: 200ms ease-in-out;
+    width: 48px;
+    height: 48px;
+    background-color: rgba(22, 24, 35, 0.06);
+    margin-top: 8px;
+    margin-bottom: 6px;
+    cursor: pointer;
+
+     &.isLiked {
+      color: var(--primary);
+     }
+  }
+
+  .number {
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+    color: rgba(22, 24, 35, 0.75);
+    text-align: center;
+  }
+}
