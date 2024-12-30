@@ -15,6 +15,7 @@
   object-position: center;
   border-radius: 50%;
   cursor: pointer;
+  user-select: none;
 }
 
 .follow__btn {
@@ -31,8 +32,7 @@
   border-radius: 50%;
   color: var(--white);
   cursor: pointer;
-  transition: .2s;
-
+  transition: 0.2s;
 
   &.followed {
     background-color: white;
@@ -56,10 +56,11 @@
     margin-top: 8px;
     margin-bottom: 6px;
     cursor: pointer;
+    user-select: none;
 
-     &.isLiked {
+    &.isLiked {
       color: var(--primary);
-     }
+    }
   }
 
   .number {
@@ -68,5 +69,6 @@
     line-height: 16px;
     color: rgba(22, 24, 35, 0.75);
     text-align: center;
+    user-select: none;
   }
 }

@@ -14,7 +14,7 @@ function FixedBtn() {
   const handleClickforGetAppBtn = () => {
     const getAppbtn = fixedBtnRef.current;
 
-    if (getAppbtn.innerText == 'Get app') {
+    if (getAppbtn.innerText === 'Get app') {
       getAppbtn.classList.add(cx('hidden'));
 
       setTimeout(() => {
