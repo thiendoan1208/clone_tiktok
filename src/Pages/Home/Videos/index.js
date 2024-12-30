@@ -1,11 +1,12 @@
 import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faVolumeXmark, faEllipsis, faUpLong, faHeartCrack } from '@fortawesome/free-solid-svg-icons';
+import { faVolumeXmark, faEllipsis, faUpLong, faHeartCrack, faPause, faPlay } from '@fortawesome/free-solid-svg-icons';
 import { faClosedCaptioning, faFlag } from '@fortawesome/free-regular-svg-icons';
 import { faLayerGroup } from '@fortawesome/free-solid-svg-icons';
 import Tippy from '@tippyjs/react';
 import HeadlessTippy from '@tippyjs/react/headless';
+import { useRef, useState } from 'react';
 
 import styles from './Videos.module.scss';
 import StatusBar from '../StatusBar';
@@ -14,6 +15,12 @@ import { Wrapper } from '~/Components/Proppers';
 const cx = classNames.bind(styles);
 
 function Video({ data }) {
+  const [isPlaying, setIsPlaying] = useState(true)
+
+  const videoWrapperRef = useRef()
+  const videoRef = useRef()
+  const controlAnimation = useRef()
+
   const handleMoreOption = (props) => {
     return (
       <div className={cx('more__options')} tabIndex="-1" {...props}>
@@ -40,14 +47,40 @@ function Video({ data }) {
     );
   };
 
-  return (
-    <div className={cx('wraper')}>
-      <video className={cx('video')} playsInline preload="none" muted loop src={data.popular_video.file_url} />
+  // Video Play/Pause
+  const handleVideoPlay = () => {
+      if(videoRef.current.paused) {
+        videoRef.current.play()
+        setIsPlaying(true)
+        controlAnimation.current.classList.add(cx('animation'))
+        setTimeout(() => {
+        controlAnimation.current.classList.remove(cx('animation'))
+        },300)
+      } else {
+        videoRef.current.pause()
+        setIsPlaying(false)
+        controlAnimation.current.classList.add(cx('animation'))
+        setTimeout(() => {
+        controlAnimation.current.classList.remove(cx('animation'))
+        },300)
+      }
+  }
 
+  return (
+    <div 
+    onClick={handleVideoPlay}
+    ref={videoWrapperRef} 
+    className={cx('wraper')}
+    >
+      {/* Video */}
+      <video ref={videoRef} className={cx('video')} playsInline preload="none" muted loop src={data.popular_video.file_url} />
+
+      {/* Status Bar */}
       <div className={cx('status')}>
         <StatusBar data={data} />
       </div>
 
+      {/* Video Control */}
       <div className={cx('video__control')}>
         <div className={cx('control__header')}>
           <div className={cx('volume')}>
@@ -83,6 +116,12 @@ function Video({ data }) {
           </Tippy>
         </div>
       </div>
+
+      {/* Video Play/Pause Effect */}
+      <div ref={controlAnimation}  className={cx('control__animation')}>
+      {isPlaying ? <FontAwesomeIcon icon={faPlay} /> : <FontAwesomeIcon icon={faPause} />}
+      </div>
+
     </div>
   );
 }
