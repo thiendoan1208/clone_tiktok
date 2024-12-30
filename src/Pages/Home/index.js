@@ -44,7 +44,6 @@ function Home() {
           const video = wrapper.querySelector('video');
 
           if (entry.isIntersecting && video) {
-            video.muted = true;
             video.play().catch((err) => {
               console.warn('Video đang bị lỗi, F5 lại trang web để sửa', err);
             });
