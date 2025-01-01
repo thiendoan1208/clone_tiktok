@@ -1,0 +1,59 @@
+.wrapper {
+  width: 92%;
+  position: absolute;
+  z-index: 9999;
+  bottom: 1.9rem;
+  left: 2rem;
+  color: white;
+}
+
+.header {
+  font-size: 1.4rem;
+  font-weight: 600;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+
+.username {
+  color: white;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.dot_icon {
+  font-size: 0.5rem;
+  margin: 0 0.5rem;
+}
+
+.main {
+  display: block;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  overflow: hidden;
+  font-size: 14px;
+  line-height: 18px;
+  margin: .5rem 0 0 0;
+}
+
+.footer {
+  width: 80%;
+  display: block;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
+  overflow: hidden;
+  line-height: 21px;
+  font-weight: 400;
+  font-size: 14px;
+  margin: .5rem 0;
+}
+
+.music__icon {
+  margin-right: 0.5rem;
+}

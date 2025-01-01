@@ -18,7 +18,8 @@ function StatusBar({ data }) {
   const [like, setLike] = useState(false);
   const [count, setCount] = useState(data.popular_video.likes_count);
 
-  const handleFollow = () => {
+  const handleFollow = (e) => {
+    e.stopPropagation()
     if (data.is_followed === true || follow === true) {
       setFollow(false);
       followBtn.current.classList.add(cx('followed'));
@@ -28,7 +29,8 @@ function StatusBar({ data }) {
     }
   };
 
-  const handleLike = () => {
+  const handleLike = (e) => {
+    e.stopPropagation()
     if (data.popular_video.is_liked === true || like === true) {
       setLike(false);
       likeBtn.current.classList.remove(cx('isLiked'));
@@ -40,8 +42,11 @@ function StatusBar({ data }) {
     }
   };
 
+  const handleStopPropagation = (e) => {
+      e.stopPropagation()
+  }
   return (
-    <>
+    <div>
       <div className={cx('avatar')}>
         <StatusAvatar data={data} isFollow={follow} />
         <div ref={followBtn} className={cx('follow__btn')} onClick={handleFollow}>
@@ -61,21 +66,21 @@ function StatusBar({ data }) {
       </div>
 
       <div className={cx('react')}>
-        <div className={cx('react__btn')}>
+        <div className={cx('react__btn')} onClick={handleStopPropagation}>
           <FontAwesomeIcon icon={faCommentDots} />
         </div>
         <span className={cx('number')}>{data.popular_video.comments_count}</span>
       </div>
 
       <div className={cx('react')}>
-        <div className={cx('react__btn')}>
+        <div className={cx('react__btn')} onClick={handleStopPropagation}>
           <FontAwesomeIcon icon={faBookmark} />
         </div>
         <span className={cx('number')}>0</span>
       </div>
 
       <ShareOverLay data={data} />
-    </>
+    </div>
   );
 }
 

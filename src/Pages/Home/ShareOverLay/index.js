@@ -19,7 +19,8 @@ function ShareOverLay({ data }) {
   const [active, setActive] = useState(false);
 
   // Copy Video Link
-  const handleCopy = async () => {
+  const handleCopy = async (e) => {
+    e.stopPropagation()
     try {
       await navigator.clipboard.writeText(linkRef.current.innerText);
       shareOverlayRef.current.classList.remove(cx('active'));
@@ -33,7 +34,8 @@ function ShareOverLay({ data }) {
   };
 
   // On/Off ShareOverlay
-  const hanleShareOverlay = () => {
+  const hanleShareOverlay = (e) => {
+    e.stopPropagation()
     if (active === true) {
       setActive(false);
       shareOverlayRef.current.classList.remove(cx('active'));
@@ -56,7 +58,7 @@ function ShareOverLay({ data }) {
         <span>Copied</span>
       </div>
 
-      <div ref={shareOverlayRef} className={cx('share__overlay')}>
+      <div onClick={(e) => e.stopPropagation()} ref={shareOverlayRef} className={cx('share__overlay')}>
         <div className={cx('wrapper')}>
           <div className={cx('inner__wrapper')}>
             <header>

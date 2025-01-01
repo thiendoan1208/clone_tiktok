@@ -1,3 +1,9 @@
+@mixin flex() {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .wrapper {
   width: 100%;
   height: 91vh;
@@ -8,13 +14,18 @@
 }
 
 .video {
-  width: 100%;
+  position: relative;
   display: flex;
   align-items: center;
   flex-direction: column;
   margin-bottom: 4rem;
   scroll-snap-align: start;
   scroll-snap-stop: always;
+
+  &:hover .more {
+    opacity: 1;
+    pointer-events: all;
+  }
 }
 
 .controls {
@@ -40,4 +51,138 @@
   &:hover {
     background-color: rgb(230, 230, 230);
   }
+}
+
+// Volume
+.volume {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 1.5%;
+  left: 1%;
+  font-size: 2rem;
+  width: 4rem;
+  height: 4rem;
+  color: white;
+  cursor: pointer;
+  z-index: 999;
+}
+
+// More
+.more {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 1.5%;
+  right: 1%;
+  font-size: 2rem;
+  width: 4rem;
+  height: 4rem;
+  color: white;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.3s;
+  z-index: 999;
+}
+
+// More Option
+.more__options {
+  width: 20rem;
+  color: black;
+  padding: 0.2rem 0;
+  font-size: 1.5rem;
+}
+
+.item {
+  padding: 0.7rem 1.5rem;
+  @include flex();
+  justify-content: left;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+
+  .more__icon {
+    width: 1.6rem;
+    height: 1.5rem;
+    padding-right: 1rem;
+  }
+}
+
+.button {
+  width: 5rem;
+  height: 2.5rem;
+  background-color: rgb(0, 0, 0, 0.1);
+  margin-left: 2rem;
+  border-radius: 999rem;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  transition: 0.2s;
+  cursor: pointer;
+
+  &.active {
+    background-color: rgb(0, 252, 147);
+  }
+}
+
+.dot {
+  width: 2rem;
+  height: 2rem;
+  margin-left: 0.2rem;
+  background-color: white;
+  border-radius: 50%;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  transition: 0.2s;
+
+  &.active {
+    margin-left: 57%;
+  }
+}
+
+// Progress Bar
+.progress__bar {
+  position: absolute;
+  bottom: .1rem;
+  border-radius: 999rem;
+  width: 99%;
+  height: 0.4rem;
+  background-color: rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+  transition: height .1s;
+
+  &:hover {
+    height: .7rem;
+  }
+
+  &:hover .progress__dot {
+   opacity: 1;
+  }
+}
+
+.progress__fill {
+  position: relative;
+  width: 0%;
+  height: 100%;
+  border-radius: 999rem;
+  background-color: var(--primary);
+  cursor: pointer;
+}
+
+.progress__dot {
+  position: absolute;
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: white;
+  top: 50%;
+  right: -4%;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  cursor: grab;
+  opacity: 0;
+  transition: .2s;
 }
