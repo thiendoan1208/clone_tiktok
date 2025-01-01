@@ -1,11 +1,12 @@
 import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {faPause, faPlay } from '@fortawesome/free-solid-svg-icons';
+import { faPause, faPlay } from '@fortawesome/free-solid-svg-icons';
 import { faClosedCaptioning } from '@fortawesome/free-regular-svg-icons';
 import { faLayerGroup } from '@fortawesome/free-solid-svg-icons';
 import Tippy from '@tippyjs/react';
 import { useRef, useState } from 'react';
+import React from 'react';
 
 import styles from './Videos.module.scss';
 import StatusBar from '../StatusBar';
@@ -19,7 +20,6 @@ function Video({ data }) {
   const videoWrapperRef = useRef();
   const videoRef = useRef();
 
-
   // Video Play/Pause
   const handleVideoPlay = () => {
     if (videoRef.current.paused) {
@@ -32,50 +32,49 @@ function Video({ data }) {
   };
 
   return (
-    <div onClick={handleVideoPlay} ref={videoWrapperRef} className={cx('wraper')}>
-      {/* Video */}
-      <video
-        ref={videoRef}
-        className={cx('video')}
-        playsInline
-        preload="none"
-        loop={false}
-        muted
-        autoPlay
-        src={data.popular_video.file_url}
-      />
+    <React.Fragment>
+      <div onClick={handleVideoPlay} ref={videoWrapperRef} className={cx('wraper')}>
+        {/* Video */}
+        <video
+          ref={videoRef}
+          className={cx('video')}
+          playsInline
+          preload="none"
+          loop={false}
+          muted
+          autoPlay
+          src={data.popular_video.file_url}
+        />
+
+        <VideoInformation data={data} />
+
+        {/* Video Control */}
+        <div className={cx('video__control')}>
+          <div className={cx('control__header')}></div>
+
+          <div className={cx('control__footer')}>
+            {/* Video Play/Pause Effect */}
+            <div className={cx('play__pause')}>
+              {isPlaying ? <FontAwesomeIcon icon={faPause} /> : <FontAwesomeIcon icon={faPlay} />}
+            </div>
+
+            <div>
+              <Tippy content="Caption" placement="bottom">
+                <FontAwesomeIcon className={cx('footer__icon')} icon={faClosedCaptioning} />
+              </Tippy>
+              <Tippy content="Floating Player" placement="bottom">
+                <FontAwesomeIcon className={cx('footer__icon')} icon={faLayerGroup} />
+              </Tippy>
+            </div>
+          </div>
+        </div>
+      </div>
 
       {/* Status Bar */}
       <div className={cx('status')}>
         <StatusBar data={data} />
       </div>
-
-      <VideoInformation data={data} />
-
-
-      {/* Video Control */}
-      <div className={cx('video__control')}>
-        <div className={cx('control__header')}>
-          
-        </div>
-
-        <div className={cx('control__footer')}>
-          {/* Video Play/Pause Effect */}
-         <div className={cx('play__pause')}>
-         {isPlaying ? <FontAwesomeIcon icon={faPause} /> : <FontAwesomeIcon icon={faPlay} />}
-         </div>
-
-          <div>
-            <Tippy content="Caption" placement="bottom">
-              <FontAwesomeIcon className={cx('footer__icon')} icon={faClosedCaptioning} />
-            </Tippy>
-            <Tippy content="Floating Player" placement="bottom">
-              <FontAwesomeIcon className={cx('footer__icon')} icon={faLayerGroup} />
-            </Tippy>
-          </div>
-        </div>
-      </div>
-    </div>
+    </React.Fragment>
   );
 }
 
