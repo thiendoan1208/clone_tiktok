@@ -30,8 +30,8 @@
   scroll-snap-type: y mandatory;
   scroll-padding-top: 1.2rem;
   
-  // &::-webkit-scrollbar {
-  //   width: 5px;
-  // }
+  &::-webkit-scrollbar {
+    width: 0;
+  }
 }
 
