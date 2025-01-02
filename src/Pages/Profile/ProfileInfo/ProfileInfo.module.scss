@@ -1,0 +1,108 @@
+@mixin flex {
+  display: flex;
+}
+
+.wrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 2rem;
+}
+
+.img {
+  width: 21.2rem;
+  height: 21.2rem;
+  border-radius: 50%;
+  overflow: hidden;
+  img {
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+}
+
+.infor {
+  flex: 1;
+  margin-left: 3rem;
+  transform: translateY(1rem);
+}
+
+.nickname {
+  @include flex();
+  justify-content: left;
+  align-items: center;
+
+  h1 {
+    font-size: 2.4rem;
+    font-weight: 700;
+  }
+
+  h2 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    height: 2.1rem;
+    margin-left: 1.5rem;
+  }
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  margin: 1rem 0;
+}
+
+.primary__btn {
+  padding: 1.2rem 1.6rem;
+  font-weight: 600;
+
+  &:hover {
+    background-color: rgb(256, 46, 87);
+  }
+}
+
+.edit__btn {
+  background-color: rgba(0, 0, 0, 0.05);
+  min-width: 0;
+  padding: 1.2rem 1.6rem;
+  font-weight: 600;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+}
+
+.follow {
+  display: flex;
+  align-items: center;
+}
+
+.follow__info {
+  margin: 0 1rem;
+
+  &:nth-child(1) {
+    margin-left: 0;
+  }
+
+  .number {
+    font-weight: 700;
+    margin-right: 0.5rem;
+  }
+
+  .symbol {
+    color: rgba(22, 24, 35, 0.75);
+    cursor: pointer;
+
+    &:hover {
+        text-decoration: underline;
+    }
+  }
+
+  .no_symbol {
+    color: rgba(22, 24, 35, 0.75);
+  }
+}
+
+.bio {
+    margin-top: 1rem;
+}
