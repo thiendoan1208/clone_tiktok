@@ -94,7 +94,7 @@
     cursor: pointer;
 
     &:hover {
-        text-decoration: underline;
+      text-decoration: underline;
     }
   }
 
@@ -104,5 +104,237 @@
 }
 
 .bio {
-    margin-top: 1rem;
+  margin-top: 1rem;
+}
+
+// Edit Profile Overlay
+
+.overlay {
+  @include flex();
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+}
+
+.edit__profile {
+  width: 70rem;
+  min-height: 10rem;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border-radius: 1rem;
+}
+
+.header {
+  padding: 24px 24px 12px;
+  line-height: 36px;
+  border-bottom: 0.5px solid rgba(22, 24, 35, 0.2);
+  display: flex;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  align-items: center;
+}
+
+.header__text {
+  font-weight: 600;
+  font-size: 24px;
+  color: rgb(22, 24, 35);
+}
+
+.header_X {
+  cursor: pointer;
+}
+
+.main {
+  padding: 8px 24px 0px;
+}
+
+.all__section {
+  padding: 16px 0px;
+  display: flex;
+  border-bottom: 0.5px solid rgba(22, 24, 35, 0.12);
+}
+
+.aside {
+  font-weight: 600;
+  line-height: 24px;
+  font-size: 16px;
+  width: 120px;
+  margin-right: 24px;
+}
+
+// Photo Section
+.photo__section {
+  height: 96px;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  flex: 1;
+}
+
+.pre__photo {
+  position: relative;
+  width: 9.6rem;
+  height: 100%;
+  margin-left: 12.8rem;
+  border-radius: 50%;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 50%;
+  }
+}
+
+.edit__img {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 3.2rem;
+  height: 3.2rem;
+  border: 1px solid rgb(208, 208, 211);
+  border-radius: 50%;
+  font-weight: 400;
+  background-color: white;
+  cursor: pointer;
+}
+
+// Username Section
+
+.username__change {
+  margin-left: 5rem;
+}
+
+.username__input {
+  width: 360px;
+  height: 38px;
+  border-radius: 4px;
+  background: rgba(22, 24, 35, 0.06);
+  caret-color: rgb(254, 44, 85);
+  font-size: 16px;
+  color: rgb(22, 24, 35);
+  line-height: 24px;
+  outline: none;
+  border: none;
+  padding: 7px 12px;
+  box-sizing: border-box;
+}
+
+.username__rule {
+  width: 36rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.username__link {
+  font-size: 12px;
+  color: rgba(22, 24, 35, 0.75);
+  line-height: 18px;
+  margin-top: 16px;
+  max-width: 460px;
+  overflow: hidden;
+}
+
+.rule {
+  @extend .username__link;
+  margin-top: 1rem;
+}
+
+// Name
+
+.name__change {
+  margin-left: 5rem;
+}
+
+.name__input {
+  width: 360px;
+  height: 38px;
+  border-radius: 4px;
+  background: rgba(22, 24, 35, 0.06);
+  caret-color: rgb(254, 44, 85);
+  font-size: 16px;
+  color: rgb(22, 24, 35);
+  line-height: 24px;
+  outline: none;
+  border: none;
+  padding: 7px 12px;
+  box-sizing: border-box;
+}
+
+.name__rule {
+  width: 36rem;
+  display: flex;
+  flex-direction: column;
+}
+
+// Bio
+
+.bio__change {
+  margin-left: 5rem;
+}
+
+.bio__input {
+  width: 360px;
+  height: 10rem;
+  border-radius: 4px;
+  background: rgba(22, 24, 35, 0.06);
+  caret-color: rgb(254, 44, 85);
+  font-size: 16px;
+  color: rgb(22, 24, 35);
+  line-height: 24px;
+  outline: none;
+  border: none;
+  padding: 7px 12px;
+  box-sizing: border-box;
+}
+
+.bio__rule {
+  width: 36rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.text__counter {
+  margin-top: -1rem;
+}
+
+// Save Area
+.save__area {
+  padding: 24px 0px 12px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.cancel {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  color: black;
+  font-size: 1.4rem;
+  font-weight: 600;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+}
+
+.save {
+  font-size: 1.4rem;
+  border: none;
+  background-color: rgba(0, 0, 0, 0.05);
+  color: rgba(0, 0, 0, 0.5);
+  cursor: default;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+  }
 }
